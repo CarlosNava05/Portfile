@@ -3,13 +3,17 @@ let currentY = 0;
 let wrapper = document.getElementById('smooth-wrapper');
 let heroTitle = document.getElementById('heroTitle');
 
+// Escuchar el evento de scroll nativo de forma limpia
 window.addEventListener('scroll', () => {
     scrollY = window.scrollY;
 });
 
+// Bucle de inercia suave (Lerp)
 function lerpScroll() {
     currentY += (scrollY - currentY) * 0.08;
-    wrapper.style.transform = `translate3d(0, -${currentY}px, 0)`;
+    if (wrapper) {
+        wrapper.style.transform = `translate3d(0, -${currentY}px, 0)`;
+    }
 
     let heroProgress = Math.min(scrollY / window.innerHeight, 1);
     if (heroTitle) {
@@ -24,30 +28,48 @@ function lerpScroll() {
 }
 lerpScroll();
 
-window.addEventListener('resize', updateBodyHeight);
+// Sincronización automática y continua de la altura del body para permitir el scroll
 function updateBodyHeight() {
-    document.body.style.height = wrapper.getBoundingClientRect().height + 'px';
+    if (wrapper) {
+        const totalHeight = wrapper.getBoundingClientRect().height;
+        document.body.style.height = totalHeight + 'px';
+    }
 }
-setTimeout(updateBodyHeight, 100);
+
+// Recalcular al cargar, redimensionar o interactuar
+window.addEventListener('resize', updateBodyHeight);
+window.addEventListener('load', updateBodyHeight);
+setTimeout(updateBodyHeight, 150);
+
+// Usar ResizeObserver para detectar cambios dinámicos (cuando abres los proyectos) y ajustar el scroll al instante
+if (wrapper && window.ResizeObserver) {
+    const resizeObserver = new ResizeObserver(() => {
+        updateBodyHeight();
+    });
+    resizeObserver.observe(wrapper);
+}
 
 // Inline Project Showcase Toggle (Accordion Style)
 const workWrappers = document.querySelectorAll('.work-item-wrapper');
 
 workWrappers.forEach(wrapperEl => {
     const row = wrapperEl.querySelector('.work-item-row');
-    row.addEventListener('click', () => {
-        const isActive = wrapperEl.classList.contains('active');
-        
-        // Cierra los demás
-        workWrappers.forEach(w => w.classList.remove('active'));
-        
-        // Si no estaba activo, lo abre
-        if (!isActive) {
-            wrapperEl.classList.add('active');
-        }
-        
-        setTimeout(updateBodyHeight, 400);
-    });
+    if (row) {
+        row.addEventListener('click', () => {
+            const isActive = wrapperEl.classList.contains('active');
+            
+            // Cierra los demás
+            workWrappers.forEach(w => w.classList.remove('active'));
+            
+            // Si no estaba activo, lo abre
+            if (!isActive) {
+                wrapperEl.classList.add('active');
+            }
+            
+            // Forzar actualización inmediata del body height tras la animación
+            setTimeout(updateBodyHeight, 450);
+        });
+    }
 });
 
 // Trigger Language Bars Animation on Scroll
@@ -64,4 +86,6 @@ const langObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 const langSection = document.getElementById('languages');
-if (langSection) langObserver.observe(langSection);
+if (langSection) {
+    langObserver.observe(langSection);
+}
