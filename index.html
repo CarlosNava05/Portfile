@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <!-- Header Fijo Ejecutivo -->
+    <!-- Header Fijo Limpio -->
     <header class="editorial-header">
         <div class="brand-name">Carlos Nava</div>
         <ul class="nav-links">
@@ -25,7 +25,7 @@
         </ul>
     </header>
 
-    <!-- Contenedor Principal -->
+    <!-- Contenedor Principal (Scroll Nativo Puro) -->
     <main class="main-container">
 
         <!-- Hero Section -->
@@ -38,6 +38,7 @@
                 <p class="hero-bio">
                     Ingeniero en Desarrollo de Software especializado en full-stack, automatización y arquitecturas de datos. Con experiencia en Grupo Xcaret y sistemas galardonados a nivel estatal y regional. Con sede en Toluca, Estado de México — disponible para proyectos remotos y presenciales.
                 </p>
+                <!-- Insignias con scroll horizontal en móvil si no caben -->
                 <div class="hero-badges-stack horizontal-scroll-container">
                     <span class="editorial-badge">Campeón Estatal de Robótica</span>
                     <span class="editorial-badge">Ingeniero de Software</span>
@@ -49,7 +50,7 @@
         <!-- Selected Works Section -->
         <section class="works-section" id="works">
             <div class="section-header-editorial">[ 01 — Proyectos Seleccionados & Sistemas Empresariales ]</div>
-            <p class="section-tip">💡 Toca cualquier proyecto para desplegar su arquitectura y vista previa.</p>
+            <p class="section-tip">💡 Toca cualquier proyecto para desplegar su arquitectura y vista previa al instante.</p>
             
             <div class="work-item-wrapper" data-title="Plataforma TAOIP — Grupo Xcaret">
                 <div class="work-item-row">
@@ -148,7 +149,7 @@
             </div>
         </section>
 
-        <!-- Bento Editorial Section (Resumen de Capacidades adaptado sin cortes) -->
+        <!-- Bento Editorial Section -->
         <section class="bento-editorial-section" id="expertise">
             <div class="section-header-editorial">[ 02 — Resumen de Capacidades ]</div>
             <div class="bento-editorial-grid">
@@ -157,7 +158,8 @@
                         <h3>Habilidades Técnicas y de Arquitectura</h3>
                         <p>Dominio avanzado en lenguajes como Python, C#, Java, JavaScript, HTML, CSS y SQL. Experiencia sólida en infraestructura Cloud (AWS), Git, Docker, Kubernetes, bases de datos relacionales y control de hardware IoT (Arduino, ESP32).</p>
                     </div>
-                    <div class="horizontal-scroll-container" style="margin-top: 2rem;">
+                    <!-- CONTENEDOR FLEXIBLE ADAPTABLE PARA MÓVIL Y ESCRITORIO -->
+                    <div class="capabilities-badges-wrapper">
                         <span class="editorial-badge">Python / C# / Java</span>
                         <span class="editorial-badge">AWS & Cloud DevOps</span>
                         <span class="editorial-badge">IoT & Automatización</span>
@@ -188,6 +190,7 @@
                 </div>
             </div>
         </section>
+        
 
         <!-- Trayectoria Profesional (Timeline) -->
         <section class="timeline-section" id="journey">
@@ -272,7 +275,7 @@
             </div>
         </section>
 
-        <!-- Honores y Premios -->
+        <!-- Honores y Premios (Con scroll horizontal táctil en móvil para evitar cortes) -->
         <section class="honors-section" id="honors">
             <div class="section-header-editorial">[ 05 — Honores & Premios ]</div>
             <p class="section-tip">👉 Desliza hacia la derecha para ver todos los reconocimientos.</p>
@@ -343,7 +346,7 @@
         <!-- Footer -->
         <footer class="footer-editorial" id="contact">
             <div class="section-header-editorial">[ 07 — Iniciar Conversación ]</div>
-            <h2 class="footer-title">Construyamos algo <br><span style="font-style: italic; color: #fff;">extraordinario.</span></h2>
+            <h2 class="footer-title">Construyamos algo <br><span style="font-style: italic; color: var(--accent-green);">extraordinario.</span></h2>
             <p style="color: var(--text-muted); max-width: 550px; font-size: 1.05rem; line-height: 1.6;">
                 Disponible para proyectos de ingeniería de software de alto nivel, sistemas de automatización avanzada y arquitectura cloud empresarial.
             </p>
