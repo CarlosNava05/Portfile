@@ -1,4 +1,3 @@
-// Motor de inercia y animación cinética del Hero (Restaurado y optimizado)
 let scrollY = 0;
 let currentY = 0;
 let wrapper = document.getElementById('smooth-wrapper');
@@ -15,10 +14,11 @@ function lerpScroll() {
         wrapper.style.transform = `translate3d(0, -${currentY}px, 0)`;
     }
 
+    // Animación de desplazamiento y escala del título principal al hacer scroll
     let heroProgress = Math.min(scrollY / window.innerHeight, 1);
     if (heroTitle) {
-        let xOffset = heroProgress * (isMobile ? 30 : 150);
-        let scaleVal = 1 - heroProgress * (isMobile ? 0.05 : 0.15);
+        let xOffset = heroProgress * (isMobile ? 25 : 150);
+        let scaleVal = 1 - heroProgress * (isMobile ? 0.04 : 0.15);
         let opacityVal = 1 - heroProgress * 1.2;
         heroTitle.style.transform = `translateX(-${xOffset}px) scale(${scaleVal})`;
         heroTitle.style.opacity = Math.max(opacityVal, 0);
@@ -28,7 +28,6 @@ function lerpScroll() {
 }
 lerpScroll();
 
-// Sincronización de altura para el wrapper en escritorio
 function updateBodyHeight() {
     if (!isMobile && wrapper) {
         const totalHeight = wrapper.getBoundingClientRect().height;
