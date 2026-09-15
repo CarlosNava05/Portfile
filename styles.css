@@ -1,10 +1,8 @@
 :root {
     --bg-color: #09090b;
     --surface-color: #121216;
-    --surface-glass: rgba(18, 18, 22, 0.85);
     --text-main: #f4f4f5;
     --text-muted: #a1a1aa;
-    --accent-sand: #1c1c24;
     --border-color: rgba(255, 255, 255, 0.08);
     --border-hover: rgba(118, 255, 3, 0.4);
     --accent-green: #76ff03;
@@ -18,34 +16,61 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
     opacity: 0;
-    animation: fadeIn 1s ease forwards;
+    animation: fadeIn 0.8s ease forwards;
 }
 
 @keyframes fadeIn {
     to { opacity: 1; }
 }
 
-/* En escritorio se mantiene el wrapper, en móvil se desactiva para scroll nativo fluido */
-#smooth-wrapper {
+/* Contenedor principal con scroll nativo 100% fluido */
+.main-container {
     width: 100%;
+    position: relative;
 }
 
-@media(min-width: 1024px) {
-    #smooth-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        will-change: transform;
-    }
+/* Contenedores de desplazamiento horizontal táctil para evitar cortes en móvil */
+.horizontal-scroll-container {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none; /* Firefox */
+}
+.horizontal-scroll-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
 }
 
-/* Luxury Floating Header */
+.honors-horizontal-scroll {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+}
+.honors-horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.section-tip {
+    font-size: 0.8rem;
+    color: var(--accent-green);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Header Fijo Limpio */
 header.editorial-header {
     position: fixed;
     top: 0;
@@ -56,7 +81,7 @@ header.editorial-header {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    background: rgba(9, 9, 11, 0.9);
+    background: rgba(9, 9, 11, 0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
 }
@@ -70,7 +95,7 @@ header.editorial-header {
 }
 
 .nav-links {
-    display: none; /* Oculto en móvil para limpiar espacio */
+    display: none;
 }
 
 @media(min-width: 968px) {
@@ -88,8 +113,6 @@ header.editorial-header {
 .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
-    position: relative;
-    padding-bottom: 2px;
     transition: color 0.3s ease;
 }
 
@@ -99,14 +122,12 @@ header.editorial-header {
 
 /* Hero Section */
 .hero-editorial {
-    min-height: 90vh;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 7rem 5vw 4rem;
     border-bottom: 1px solid var(--border-color);
-    position: relative;
-    overflow: hidden;
     background: radial-gradient(circle at 75% 25%, rgba(118, 255, 3, 0.08) 0%, transparent 60%);
 }
 
@@ -163,17 +184,12 @@ header.editorial-header {
     color: var(--text-muted);
 }
 
-.hero-badges-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
 .editorial-badge {
+    flex-shrink: 0;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border: 1px solid var(--border-color);
     border-radius: 50px;
     background: var(--surface-color);
@@ -191,7 +207,7 @@ header.editorial-header {
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--accent-green);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: 600;
 }
 
@@ -203,11 +219,8 @@ header.editorial-header {
 .work-item-row {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
     padding: 2.2rem 0;
-    text-decoration: none;
-    color: inherit;
-    position: relative;
     cursor: pointer;
 }
 
@@ -217,17 +230,20 @@ header.editorial-header {
 
 .work-title {
     font-family: 'Instrument Serif', serif;
-    font-size: clamp(2rem, 8vw, 3.8rem);
-    letter-spacing: -0.02em;
+    font-size: clamp(2rem, 8vW, 3.8rem);
     font-weight: 400;
     color: #fff;
+}
+
+.work-sub {
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 .work-meta {
     font-size: 0.85rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -237,7 +253,7 @@ header.editorial-header {
     .work-meta { justify-content: flex-end; gap: 1.5rem; }
 }
 
-/* Inline Showcase Mobile Friendly */
+/* Inline Showcase */
 .work-inline-showcase {
     max-height: 0;
     opacity: 0;
@@ -287,7 +303,7 @@ header.editorial-header {
     line-height: 1.5;
 }
 
-/* Bento Editorial Section */
+/* Bento Section */
 .bento-editorial-section {
     padding: 5rem 5vw;
     border-bottom: 1px solid var(--border-color);
@@ -312,9 +328,6 @@ header.editorial-header {
     border: 1px solid var(--border-color);
     padding: 2.5rem 2rem;
     border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .bento-card h3 {
@@ -331,7 +344,7 @@ header.editorial-header {
     font-size: 0.95rem;
 }
 
-/* Timeline Section */
+/* Timeline */
 .timeline-section {
     padding: 5rem 5vw;
     border-bottom: 1px solid var(--border-color);
@@ -373,7 +386,6 @@ header.editorial-header {
     font-size: 0.85rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
     margin-bottom: 0.8rem;
     font-weight: 600;
 }
@@ -384,7 +396,7 @@ header.editorial-header {
     color: var(--text-muted);
 }
 
-/* Education Section */
+/* Educación */
 .edu-section {
     padding: 5rem 5vw;
     border-bottom: 1px solid var(--border-color);
@@ -420,7 +432,6 @@ header.editorial-header {
     font-size: 0.8rem;
     color: var(--accent-green);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
     margin-bottom: 1.2rem;
     font-weight: 600;
 }
@@ -458,7 +469,7 @@ header.editorial-header {
     background: var(--bg-color);
 }
 
-/* Honors Section */
+/* Honores Horizontal */
 .honors-section {
     padding: 5rem 5vw;
     border-bottom: 1px solid var(--border-color);
@@ -471,17 +482,20 @@ header.editorial-header {
 }
 
 .honors-grid {
-    margin-top: 2.5rem;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
     gap: 1.5rem;
+    margin-top: 1rem;
+    width: max-content; /* Permite que fluyan horizontalmente en móvil */
 }
 
-@media(min-width: 768px) {
-    .honors-grid { grid-template-columns: repeat(3, 1fr); }
+@media(min-width: 968px) {
+    .honors-horizontal-scroll { overflow: visible; }
+    .honors-grid { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; gap: 2rem; }
 }
 
 .honor-card {
+    width: 280px;
+    flex-shrink: 0;
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 2.5rem 2rem;
@@ -489,6 +503,10 @@ header.editorial-header {
     flex-direction: column;
     gap: 1rem;
     background: var(--surface-color);
+}
+
+@media(min-width: 968px) {
+    .honor-card { width: auto; }
 }
 
 .honor-rank {
@@ -511,7 +529,7 @@ header.editorial-header {
     line-height: 1.5;
 }
 
-/* Languages Section */
+/* Idiomas */
 .lang-section {
     padding: 5rem 5vw;
     border-bottom: 1px solid var(--border-color);
@@ -540,7 +558,6 @@ header.editorial-header {
 .lang-level {
     font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
     color: var(--text-muted);
 }
 
@@ -575,7 +592,6 @@ header.editorial-header {
     font-family: 'Instrument Serif', serif;
     font-size: clamp(2.8rem, 10vw, 7rem);
     line-height: 0.95;
-    letter-spacing: -0.03em;
     text-transform: uppercase;
     color: #fff;
 }
@@ -621,5 +637,4 @@ header.editorial-header {
     color: var(--text-muted);
     margin-top: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
 }
