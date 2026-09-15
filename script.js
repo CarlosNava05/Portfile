@@ -2,23 +2,24 @@ let scrollY = 0;
 let currentY = 0;
 let wrapper = document.getElementById('smooth-wrapper');
 let heroTitle = document.getElementById('heroTitle');
+const isMobile = window.innerWidth < 1024;
 
-// Escuchar el evento de scroll nativo de forma limpia
 window.addEventListener('scroll', () => {
     scrollY = window.scrollY;
 });
 
-// Bucle de inercia suave (Lerp)
 function lerpScroll() {
-    currentY += (scrollY - currentY) * 0.08;
-    if (wrapper) {
-        wrapper.style.transform = `translate3d(0, -${currentY}px, 0)`;
+    if (!isMobile) {
+        currentY += (scrollY - currentY) * 0.08;
+        if (wrapper) {
+            wrapper.style.transform = `translate3d(0, -${currentY}px, 0)`;
+        }
     }
 
     let heroProgress = Math.min(scrollY / window.innerHeight, 1);
     if (heroTitle) {
-        let xOffset = heroProgress * 150;
-        let scaleVal = 1 - heroProgress * 0.15;
+        let xOffset = heroProgress * (isMobile ? 50 : 150);
+        let scaleVal = 1 - heroProgress * (isMobile ? 0.05 : 0.15);
         let opacityVal = 1 - heroProgress * 1.2;
         heroTitle.style.transform = `translateX(-${xOffset}px) scale(${scaleVal})`;
         heroTitle.style.opacity = Math.max(opacityVal, 0);
@@ -28,21 +29,20 @@ function lerpScroll() {
 }
 lerpScroll();
 
-// Sincronización automática y continua de la altura del body para permitir el scroll
 function updateBodyHeight() {
-    if (wrapper) {
+    if (!isMobile && wrapper) {
         const totalHeight = wrapper.getBoundingClientRect().height;
         document.body.style.height = totalHeight + 'px';
+    } else {
+        document.body.style.height = 'auto';
     }
 }
 
-// Recalcular al cargar, redimensionar o interactuar
 window.addEventListener('resize', updateBodyHeight);
 window.addEventListener('load', updateBodyHeight);
 setTimeout(updateBodyHeight, 150);
 
-// Usar ResizeObserver para detectar cambios dinámicos (cuando abres los proyectos) y ajustar el scroll al instante
-if (wrapper && window.ResizeObserver) {
+if (!isMobile && wrapper && window.ResizeObserver) {
     const resizeObserver = new ResizeObserver(() => {
         updateBodyHeight();
     });
@@ -58,16 +58,13 @@ workWrappers.forEach(wrapperEl => {
         row.addEventListener('click', () => {
             const isActive = wrapperEl.classList.contains('active');
             
-            // Cierra los demás
             workWrappers.forEach(w => w.classList.remove('active'));
             
-            // Si no estaba activo, lo abre
             if (!isActive) {
                 wrapperEl.classList.add('active');
             }
             
-            // Forzar actualización inmediata del body height tras la animación
-            setTimeout(updateBodyHeight, 450);
+            setTimeout(updateBodyHeight, 400);
         });
     }
 });
