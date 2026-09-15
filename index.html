@@ -12,21 +12,21 @@
 </head>
 <body>
 
-    <!-- Smooth Scroll Inertia Wrapper -->
-    <div id="smooth-wrapper">
+    <!-- Header Fijo Limpio -->
+    <header class="editorial-header">
+        <div class="brand-name">Carlos Nava</div>
+        <ul class="nav-links">
+            <li><a href="#works">Proyectos</a></li>
+            <li><a href="#journey">Trayectoria</a></li>
+            <li><a href="#expertise">Especialidades</a></li>
+            <li><a href="#education">Educación</a></li>
+            <li><a href="#honors">Honores</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </header>
 
-        <!-- Luxury Floating Header -->
-        <header class="editorial-header">
-            <div class="brand-name">Carlos Nava</div>
-            <ul class="nav-links">
-                <li><a href="#works">Proyectos</a></li>
-                <li><a href="#journey">Trayectoria</a></li>
-                <li><a href="#expertise">Especialidades</a></li>
-                <li><a href="#education">Educación</a></li>
-                <li><a href="#honors">Honores</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </header>
+    <!-- Contenedor Principal (Scroll Nativo Puro) -->
+    <main class="main-container">
 
         <!-- Hero Section -->
         <section class="hero-editorial">
@@ -38,7 +38,8 @@
                 <p class="hero-bio">
                     Ingeniero en Desarrollo de Software especializado en full-stack, automatización y arquitecturas de datos. Con experiencia en Grupo Xcaret y sistemas galardonados a nivel estatal y regional. Con sede en Toluca, Estado de México — disponible para proyectos remotos y presenciales.
                 </p>
-                <div class="hero-badges-stack">
+                <!-- Insignias con scroll horizontal en móvil si no caben -->
+                <div class="hero-badges-stack horizontal-scroll-container">
                     <span class="editorial-badge">Campeón Estatal de Robótica</span>
                     <span class="editorial-badge">Ingeniero de Software</span>
                     <span class="editorial-badge">Toluca, México</span>
@@ -49,17 +50,17 @@
         <!-- Selected Works Section -->
         <section class="works-section" id="works">
             <div class="section-header-editorial">[ 01 — Proyectos Seleccionados & Sistemas Empresariales ]</div>
-            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">💡 Toca cualquier proyecto para desplegar su arquitectura y vista previa al instante.</p>
+            <p class="section-tip">💡 Toca cualquier proyecto para desplegar su arquitectura y vista previa al instante.</p>
             
-            <div class="work-item-wrapper" data-title="Plataforma TAOIP — Grupo Xcaret" data-cat="Infraestructura Empresarial">
+            <div class="work-item-wrapper" data-title="Plataforma TAOIP — Grupo Xcaret">
                 <div class="work-item-row">
                     <div>
                         <h2 class="work-title">Plataforma TAOIP (Grupo Xcaret)</h2>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem;">Plataforma Big Data Empresarial e Inteligencia de Activos TI</p>
+                        <p class="work-sub">Plataforma Big Data Empresarial e Inteligencia de Activos TI</p>
                     </div>
                     <div class="work-meta">
                         <span>2026-Presente</span>
-                        <span style="font-size: 1.2rem;">↓</span>
+                        <span class="arrow-icon">↓</span>
                     </div>
                 </div>
                 <div class="work-inline-showcase">
@@ -75,15 +76,15 @@
                 </div>
             </div>
 
-            <div class="work-item-wrapper" data-title="Sismógrafo Sísmico & Matriz IoT" data-cat="Hardware & Arquitectura IA">
+            <div class="work-item-wrapper" data-title="Sismógrafo Sísmico & Matriz IoT">
                 <div class="work-item-row">
                     <div>
                         <h2 class="work-title">Sismógrafo & Matriz IoT</h2>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem;">1er Lugar en Innovación Matemático-Tecnológica</p>
+                        <p class="work-sub">1er Lugar en Innovación Matemático-Tecnológica</p>
                     </div>
                     <div class="work-meta">
                         <span>2026</span>
-                        <span style="font-size: 1.2rem;">↓</span>
+                        <span class="arrow-icon">↓</span>
                     </div>
                 </div>
                 <div class="work-inline-showcase">
@@ -99,15 +100,15 @@
                 </div>
             </div>
 
-            <div class="work-item-wrapper" data-title="Motor POS & Automatización Freelance" data-cat="Sistemas Web Full-Stack">
+            <div class="work-item-wrapper" data-title="Motor POS & Automatización Freelance">
                 <div class="work-item-row">
                     <div>
                         <h2 class="work-title">Motor POS & Automatización</h2>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem;">Automatización transaccional y de inventarios full-stack</p>
+                        <p class="work-sub">Automatización transaccional y de inventarios full-stack</p>
                     </div>
                     <div class="work-meta">
                         <span>2025-2026</span>
-                        <span style="font-size: 1.2rem;">↓</span>
+                        <span class="arrow-icon">↓</span>
                     </div>
                 </div>
                 <div class="work-inline-showcase">
@@ -123,15 +124,15 @@
                 </div>
             </div>
 
-            <div class="work-item-wrapper" data-title="Cinta Transportadora Automatizada" data-cat="Automatización Industrial">
+            <div class="work-item-wrapper" data-title="Cinta Transportadora Automatizada">
                 <div class="work-item-row">
                     <div>
                         <h2 class="work-title">Cinta Transportadora Automatizada</h2>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.4rem;">Clasificación inteligente con sensores — 1er Lugar interno</p>
+                        <p class="work-sub">Clasificación inteligente con sensores — 1er Lugar interno</p>
                     </div>
                     <div class="work-meta">
                         <span>2024</span>
-                        <span style="font-size: 1.2rem;">↓</span>
+                        <span class="arrow-icon">↓</span>
                     </div>
                 </div>
                 <div class="work-inline-showcase">
@@ -157,7 +158,8 @@
                         <h3>Habilidades Técnicas y de Arquitectura</h3>
                         <p>Dominio avanzado en lenguajes como Python, C#, Java, JavaScript, HTML, CSS y SQL. Experiencia sólida en infraestructura Cloud (AWS), Git, Docker, Kubernetes, bases de datos relacionales y control de hardware IoT (Arduino, ESP32).</p>
                     </div>
-                    <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <!-- Contenedor con scroll horizontal táctil para tags largos -->
+                    <div class="horizontal-scroll-container" style="margin-top: 2rem;">
                         <span class="editorial-badge">Python / C# / Java</span>
                         <span class="editorial-badge">AWS & Cloud DevOps</span>
                         <span class="editorial-badge">IoT & Automatización</span>
@@ -258,7 +260,7 @@
                 <div class="edu-card span-full" style="grid-column: 1 / -1;">
                     <h3>Certificaciones</h3>
                     <div class="edu-meta-line">Asociación de Ciencias Aplicadas en Robótica y Tecnología</div>
-                    <ul class="cert-list mobile-grid">
+                    <ul class="cert-list">
                         <li><span>Robótica Avanzada y Automatización (UNAM)</span><span class="cert-badge-slot">UNAM</span></li>
                         <li><span>Arduino + Processing (UNAM)</span><span class="cert-badge-slot">UNAM</span></li>
                         <li><span>PH4 Bionics — Prótesis 3D</span><span class="cert-badge-slot">PH4</span></li>
@@ -272,39 +274,42 @@
             </div>
         </section>
 
-        <!-- Honores y Premios -->
+        <!-- Honores y Premios (Con scroll horizontal táctil en móvil para evitar cortes) -->
         <section class="honors-section" id="honors">
             <div class="section-header-editorial">[ 05 — Honores & Premios ]</div>
-            <div class="honors-grid">
-                <div class="honor-card">
-                    <div class="honor-rank">1º</div>
-                    <div class="honor-title">Competencia Estatal de Robótica</div>
-                    <div class="honor-desc">Reconocimiento como mejor participante a nivel estatal.</div>
-                </div>
-                <div class="honor-card">
-                    <div class="honor-rank">2º</div>
-                    <div class="honor-title">Competencia Regional de Robótica</div>
-                    <div class="honor-desc">Desempeño técnico e innovación destacados a nivel regional.</div>
-                </div>
-                <div class="honor-card">
-                    <div class="honor-rank">1º</div>
-                    <div class="honor-title">Competencia Matemático-Tecnológica</div>
-                    <div class="honor-desc">Prototipo funcional de sismógrafo con modelado matemático y software propio.</div>
-                </div>
-                <div class="honor-card">
-                    <div class="honor-rank">1º</div>
-                    <div class="honor-title">Competencia Interna de Automatización</div>
-                    <div class="honor-desc">Prototipo de cinta transportadora de clasificación inteligente con sensores.</div>
-                </div>
-                <div class="honor-card">
-                    <div class="honor-rank">—</div>
-                    <div class="honor-title">ICPC — Competencia Universitaria de Programación</div>
-                    <div class="honor-desc">Fortalecimiento de lógica algorítmica y resolución de problemas bajo presión.</div>
-                </div>
-                <div class="honor-card">
-                    <div class="honor-rank">—</div>
-                    <div class="honor-title">Sistema POS para Negocios</div>
-                    <div class="honor-desc">Módulos comerciales de ventas, control de inventario y reportes operativos.</div>
+            <p class="section-tip">👉 Desliza hacia la derecha para ver todos los reconocimientos.</p>
+            <div class="honors-horizontal-scroll">
+                <div class="honors-grid">
+                    <div class="honor-card">
+                        <div class="honor-rank">1º</div>
+                        <div class="honor-title">Competencia Estatal de Robótica</div>
+                        <div class="honor-desc">Reconocimiento como mejor participante a nivel estatal.</div>
+                    </div>
+                    <div class="honor-card">
+                        <div class="honor-rank">2º</div>
+                        <div class="honor-title">Competencia Regional de Robótica</div>
+                        <div class="honor-desc">Desempeño técnico e innovación destacados a nivel regional.</div>
+                    </div>
+                    <div class="honor-card">
+                        <div class="honor-rank">1º</div>
+                        <div class="honor-title">Competencia Matemático-Tecnológica</div>
+                        <div class="honor-desc">Prototipo funcional de sismógrafo con modelado matemático y software propio.</div>
+                    </div>
+                    <div class="honor-card">
+                        <div class="honor-rank">1º</div>
+                        <div class="honor-title">Competencia Interna de Automatización</div>
+                        <div class="honor-desc">Prototipo de cinta transportadora de clasificación inteligente con sensores.</div>
+                    </div>
+                    <div class="honor-card">
+                        <div class="honor-rank">—</div>
+                        <div class="honor-title">ICPC — Competencia Universitaria de Programación</div>
+                        <div class="honor-desc">Fortalecimiento de lógica algorítmica y resolución de problemas bajo presión.</div>
+                    </div>
+                    <div class="honor-card">
+                        <div class="honor-rank">—</div>
+                        <div class="honor-title">Sistema POS para Negocios</div>
+                        <div class="honor-desc">Módulos comerciales de ventas, control de inventario y reportes operativos.</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -337,7 +342,7 @@
             </div>
         </section>
 
-        <!-- Luxury Footer & Inquiry -->
+        <!-- Footer -->
         <footer class="footer-editorial" id="contact">
             <div class="section-header-editorial">[ 07 — Iniciar Conversación ]</div>
             <h2 class="footer-title">Construyamos algo <br><span style="font-style: italic; color: var(--accent-green);">extraordinario.</span></h2>
@@ -354,7 +359,7 @@
             <p class="footer-note">Toluca, Estado de México · carlosnava05.github.io/Portfile</p>
         </footer>
 
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
