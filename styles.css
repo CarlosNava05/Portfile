@@ -16,8 +16,9 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+/* ELIMINADO EL SCROLL SUAVE PARA QUE SEA INSTANTÁNEO AL TACTO */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto; 
 }
 
 body {
