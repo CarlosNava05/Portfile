@@ -1,4 +1,4 @@
-// Inline Project Showcase Toggle (Accordion Style)
+// Desplegable de proyectos (Accordion nativo instantáneo)
 const workWrappers = document.querySelectorAll('.work-item-wrapper');
 
 workWrappers.forEach(wrapperEl => {
@@ -16,7 +16,7 @@ workWrappers.forEach(wrapperEl => {
     }
 });
 
-// Trigger Language Bars Animation on Scroll
+// Animación de las barras de idiomas al entrar en pantalla
 const observerOptions = { threshold: 0.2 };
 const langObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
